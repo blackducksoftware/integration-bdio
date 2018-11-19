@@ -1,0 +1,3 @@
+[submodule "integration-common"]
+	path = integration-common
+	url = https://github.com/blackducksoftware/integration-common.git
