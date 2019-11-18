@@ -20,7 +20,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.synopsys.integration.bdio;
+package com.synopsys.integration.bdio.bdio1;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -33,8 +33,8 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonWriter;
-import com.synopsys.integration.bdio.model.BdioNode;
-import com.synopsys.integration.bdio.model.SimpleBdioDocument;
+import com.synopsys.integration.bdio.bdio1.model.BdioNode;
+import com.synopsys.integration.bdio.bdio1.model.SimpleBdioDocument;
 
 public class BdioWriter implements Closeable {
     private final Gson gson;

@@ -9,13 +9,13 @@ import java.util.HashSet;
 
 import org.junit.jupiter.api.Test;
 
-import com.synopsys.integration.bdio.SimpleBdioFactory;
+import com.synopsys.integration.bdio.bdio1.SimpleBdioFactory;
+import com.synopsys.integration.bdio.bdio1.model.BdioComponent;
+import com.synopsys.integration.bdio.bdio1.model.SimpleBdioDocument;
 import com.synopsys.integration.bdio.graph.MutableDependencyGraph;
 import com.synopsys.integration.bdio.graph.MutableMapDependencyGraph;
-import com.synopsys.integration.bdio.model.BdioComponent;
 import com.synopsys.integration.bdio.model.BdioId;
 import com.synopsys.integration.bdio.model.Forge;
-import com.synopsys.integration.bdio.model.SimpleBdioDocument;
 import com.synopsys.integration.bdio.model.dependency.Dependency;
 import com.synopsys.integration.bdio.model.externalid.ExternalId;
 import com.synopsys.integration.bdio.model.externalid.ExternalIdFactory;

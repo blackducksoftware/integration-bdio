@@ -20,7 +20,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.synopsys.integration.bdio;
+package com.synopsys.integration.bdio.bdio1;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,18 +33,18 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.synopsys.integration.bdio.bdio1.model.BdioBillOfMaterials;
+import com.synopsys.integration.bdio.bdio1.model.BdioComponent;
+import com.synopsys.integration.bdio.bdio1.model.BdioExternalIdentifier;
+import com.synopsys.integration.bdio.bdio1.model.BdioNode;
+import com.synopsys.integration.bdio.bdio1.model.BdioProject;
+import com.synopsys.integration.bdio.bdio1.model.SimpleBdioDocument;
 import com.synopsys.integration.bdio.graph.DependencyGraph;
 import com.synopsys.integration.bdio.graph.DependencyGraphTransformer;
 import com.synopsys.integration.bdio.graph.MutableDependencyGraph;
 import com.synopsys.integration.bdio.graph.MutableMapDependencyGraph;
-import com.synopsys.integration.bdio.model.BdioBillOfMaterials;
-import com.synopsys.integration.bdio.model.BdioComponent;
-import com.synopsys.integration.bdio.model.BdioExternalIdentifier;
 import com.synopsys.integration.bdio.model.BdioId;
-import com.synopsys.integration.bdio.model.BdioNode;
-import com.synopsys.integration.bdio.model.BdioProject;
 import com.synopsys.integration.bdio.model.Forge;
-import com.synopsys.integration.bdio.model.SimpleBdioDocument;
 import com.synopsys.integration.bdio.model.dependency.Dependency;
 import com.synopsys.integration.bdio.model.externalid.ExternalId;
 import com.synopsys.integration.bdio.model.externalid.ExternalIdFactory;

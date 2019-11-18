@@ -29,6 +29,7 @@ import java.util.Objects;
 import org.apache.commons.lang3.StringUtils;
 
 import com.google.gson.annotations.JsonAdapter;
+import com.synopsys.integration.bdio.bdio1.model.BdioIdAdapter;
 import com.synopsys.integration.util.IntegrationEscapeUtil;
 
 @JsonAdapter(BdioIdAdapter.class)

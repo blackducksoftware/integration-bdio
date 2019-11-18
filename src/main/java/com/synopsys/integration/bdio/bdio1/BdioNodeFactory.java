@@ -20,7 +20,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.synopsys.integration.bdio;
+package com.synopsys.integration.bdio.bdio1;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,13 +33,13 @@ import java.util.UUID;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import com.synopsys.integration.bdio.model.BdioBillOfMaterials;
-import com.synopsys.integration.bdio.model.BdioComponent;
-import com.synopsys.integration.bdio.model.BdioCreationInfo;
-import com.synopsys.integration.bdio.model.BdioExternalIdentifier;
+import com.synopsys.integration.bdio.bdio1.model.BdioBillOfMaterials;
+import com.synopsys.integration.bdio.bdio1.model.BdioComponent;
+import com.synopsys.integration.bdio.bdio1.model.BdioCreationInfo;
+import com.synopsys.integration.bdio.bdio1.model.BdioExternalIdentifier;
+import com.synopsys.integration.bdio.bdio1.model.BdioProject;
+import com.synopsys.integration.bdio.bdio1.model.SpdxCreator;
 import com.synopsys.integration.bdio.model.BdioId;
-import com.synopsys.integration.bdio.model.BdioProject;
-import com.synopsys.integration.bdio.model.SpdxCreator;
 import com.synopsys.integration.bdio.model.externalid.ExternalId;
 
 public class BdioNodeFactory {

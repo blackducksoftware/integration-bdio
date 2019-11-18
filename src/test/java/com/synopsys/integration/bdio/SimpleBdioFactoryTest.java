@@ -26,10 +26,14 @@ import org.mockito.Mockito;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.synopsys.integration.bdio.bdio1.BdioNodeFactory;
+import com.synopsys.integration.bdio.bdio1.BdioPropertyHelper;
+import com.synopsys.integration.bdio.bdio1.BdioWriter;
+import com.synopsys.integration.bdio.bdio1.SimpleBdioFactory;
+import com.synopsys.integration.bdio.bdio1.model.SimpleBdioDocument;
 import com.synopsys.integration.bdio.graph.DependencyGraphTransformer;
 import com.synopsys.integration.bdio.graph.MutableDependencyGraph;
 import com.synopsys.integration.bdio.model.BdioId;
-import com.synopsys.integration.bdio.model.SimpleBdioDocument;
 import com.synopsys.integration.bdio.model.dependency.Dependency;
 import com.synopsys.integration.bdio.model.externalid.ExternalIdFactory;
 import com.synopsys.integration.bdio.utility.JsonTestUtils;

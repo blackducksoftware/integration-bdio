@@ -13,10 +13,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
 
 import com.google.gson.Gson;
-import com.synopsys.integration.bdio.BdioReader;
-import com.synopsys.integration.bdio.model.BdioComponent;
+import com.synopsys.integration.bdio.bdio1.BdioReader;
+import com.synopsys.integration.bdio.bdio1.model.BdioComponent;
+import com.synopsys.integration.bdio.bdio1.model.SimpleBdioDocument;
 import com.synopsys.integration.bdio.model.BdioId;
-import com.synopsys.integration.bdio.model.SimpleBdioDocument;
 import com.synopsys.integration.bdio.utility.JsonTestUtils;
 
 public class BdioReaderTest {

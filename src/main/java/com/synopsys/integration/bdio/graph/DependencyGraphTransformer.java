@@ -27,12 +27,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.synopsys.integration.bdio.BdioNodeFactory;
-import com.synopsys.integration.bdio.BdioPropertyHelper;
-import com.synopsys.integration.bdio.model.BdioComponent;
-import com.synopsys.integration.bdio.model.BdioExternalIdentifier;
+import com.synopsys.integration.bdio.bdio1.BdioNodeFactory;
+import com.synopsys.integration.bdio.bdio1.BdioPropertyHelper;
+import com.synopsys.integration.bdio.bdio1.model.BdioComponent;
+import com.synopsys.integration.bdio.bdio1.model.BdioExternalIdentifier;
+import com.synopsys.integration.bdio.bdio1.model.BdioNode;
 import com.synopsys.integration.bdio.model.BdioId;
-import com.synopsys.integration.bdio.model.BdioNode;
 import com.synopsys.integration.bdio.model.dependency.Dependency;
 import com.synopsys.integration.bdio.model.externalid.ExternalId;
 

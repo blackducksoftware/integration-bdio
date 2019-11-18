@@ -20,23 +20,16 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.synopsys.integration.bdio.model;
+package com.synopsys.integration.bdio.bdio1.model;
 
-import java.io.IOException;
+import com.google.gson.annotations.SerializedName;
+import com.synopsys.integration.bdio.model.BdioId;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+public class BdioRelationship {
+    @SerializedName("related")
+    public BdioId related;
 
-public class BdioIdAdapter extends TypeAdapter<BdioId> {
-    @Override
-    public void write(JsonWriter writer, BdioId value) throws IOException {
-        writer.value(value.toString());
-    }
-
-    @Override
-    public BdioId read(JsonReader in) throws IOException {
-        return new BdioId(in.nextString());
-    }
+    @SerializedName("relationshipType")
+    public String relationshipType;
 
 }

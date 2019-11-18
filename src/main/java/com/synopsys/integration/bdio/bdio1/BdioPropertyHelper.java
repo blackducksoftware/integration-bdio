@@ -20,13 +20,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.synopsys.integration.bdio;
+package com.synopsys.integration.bdio.bdio1;
 
 import java.util.List;
 
-import com.synopsys.integration.bdio.model.BdioExternalIdentifier;
-import com.synopsys.integration.bdio.model.BdioNode;
-import com.synopsys.integration.bdio.model.BdioRelationship;
+import com.synopsys.integration.bdio.bdio1.model.BdioExternalIdentifier;
+import com.synopsys.integration.bdio.bdio1.model.BdioNode;
+import com.synopsys.integration.bdio.bdio1.model.BdioRelationship;
 import com.synopsys.integration.bdio.model.externalid.ExternalId;
 
 public class BdioPropertyHelper {

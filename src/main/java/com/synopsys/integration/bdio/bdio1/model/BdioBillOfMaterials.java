@@ -20,33 +20,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.synopsys.integration.bdio.model;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+package com.synopsys.integration.bdio.bdio1.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class BdioCreationInfo {
-    @SerializedName("spdx:creator")
-    private final List<String> creator = new ArrayList<>();
+public class BdioBillOfMaterials extends BdioNode {
+    @SerializedName("specVersion")
+    public String bdioSpecificationVersion;
 
-    @SerializedName("spdx:created")
-    public String created;
+    @SerializedName("spdx:name")
+    public String spdxName;
 
-    // ekerwin 2018-06-11
-    // Black Duck only supports a single creator and if there are multiple creators, Black Duck will use only the first one.
-    public void setPrimarySpdxCreator(final SpdxCreator spdxCreator) {
-        creator.add(0, spdxCreator.getData());
-    }
+    @SerializedName("creationInfo")
+    public BdioCreationInfo creationInfo;
 
-    public void addSpdxCreator(final SpdxCreator spdxCreator) {
-        creator.add(spdxCreator.getData());
-    }
-
-    public List<String> getCreator() {
-        return Collections.unmodifiableList(creator);
+    public BdioBillOfMaterials() {
+        type = "BillOfMaterials";
     }
 
 }

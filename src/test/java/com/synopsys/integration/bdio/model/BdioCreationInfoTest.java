@@ -1,8 +1,11 @@
 package com.synopsys.integration.bdio.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+
+import com.synopsys.integration.bdio.bdio1.model.BdioCreationInfo;
+import com.synopsys.integration.bdio.bdio1.model.SpdxCreator;
 
 public class BdioCreationInfoTest {
     @Test

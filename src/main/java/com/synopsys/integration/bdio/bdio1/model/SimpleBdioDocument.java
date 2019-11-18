@@ -20,24 +20,37 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.synopsys.integration.bdio.model;
+package com.synopsys.integration.bdio.bdio1.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.annotations.SerializedName;
+public class SimpleBdioDocument {
+    private BdioBillOfMaterials billOfMaterials;
+    private BdioProject project;
+    private List<BdioComponent> components = new ArrayList<>();
 
-public class BdioNode {
-    @SerializedName("@id")
-    public BdioId id;
+    public BdioBillOfMaterials getBillOfMaterials() {
+        return billOfMaterials;
+    }
 
-    @SerializedName("@type")
-    public String type;
+    public void setBillOfMaterials(BdioBillOfMaterials billOfMaterials) {
+        this.billOfMaterials = billOfMaterials;
+    }
 
-    @SerializedName("externalIdentifier")
-    public BdioExternalIdentifier bdioExternalIdentifier;
+    public BdioProject getProject() {
+        return project;
+    }
 
-    @SerializedName("relationship")
-    public List<BdioRelationship> relationships = new ArrayList<>();
+    public void setProject(BdioProject project) {
+        this.project = project;
+    }
 
+    public List<BdioComponent> getComponents() {
+        return components;
+    }
+
+    public void setComponents(List<BdioComponent> components) {
+        this.components = components;
+    }
 }

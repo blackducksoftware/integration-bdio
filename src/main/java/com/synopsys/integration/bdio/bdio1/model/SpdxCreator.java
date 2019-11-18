@@ -20,7 +20,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.synopsys.integration.bdio.model;
+package com.synopsys.integration.bdio.bdio1.model;
 
 public class SpdxCreator {
     private String type;

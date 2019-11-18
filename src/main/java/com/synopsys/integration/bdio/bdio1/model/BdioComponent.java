@@ -20,11 +20,19 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.synopsys.integration.bdio.model;
+package com.synopsys.integration.bdio.bdio1.model;
 
-public class BdioProject extends BdioComponent {
-    public BdioProject() {
-        type = "Project";
+import com.google.gson.annotations.SerializedName;
+
+public class BdioComponent extends BdioNode {
+    @SerializedName("name")
+    public String name;
+
+    @SerializedName("revision")
+    public String version;
+
+    public BdioComponent() {
+        type = "Component";
     }
 
 }
