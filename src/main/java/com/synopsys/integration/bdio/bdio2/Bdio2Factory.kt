@@ -1,5 +1,5 @@
 /**
- * detectable
+ * integration-bdio
  *
  * Copyright (c) 2019 Synopsys, Inc.
  *
