@@ -28,9 +28,9 @@ import com.blackducksoftware.bdio2.model.Project
 import com.blackducksoftware.common.value.Product
 import com.blackducksoftware.common.value.ProductList
 import com.synopsys.integration.bdio.graph.DependencyGraph
-import com.synopsys.integration.bdio.model.BdioId
 import com.synopsys.integration.bdio.model.dependency.Dependency
 import com.synopsys.integration.bdio.model.externalid.ExternalId
+import org.apache.commons.codec.digest.DigestUtils
 import java.time.ZonedDateTime
 
 class Bdio2Factory {
@@ -40,15 +40,11 @@ class Bdio2Factory {
         return Bdio2Document(bdioMetadata, project, components)
     }
 
-    fun createBdioMetadata(projectExternalId: ExternalId, codeLocationName: String) {
-        createBdioMetadata(projectExternalId.createBdioId(), codeLocationName)
-    }
-
-    fun createBdioMetadata(id: BdioId, codeLocationName: String, creationDateTime: ZonedDateTime = ZonedDateTime.now(), productListBuilder: ProductList.Builder = ProductList.Builder()): BdioMetadata {
+    fun createBdioMetadata(codeLocationName: String, creationDateTime: ZonedDateTime = ZonedDateTime.now(), productListBuilder: ProductList.Builder = ProductList.Builder()): BdioMetadata {
         return BdioMetadata()
-                .id(id.toString())
+                .id(DigestUtils.md5Hex(codeLocationName))
                 .name(codeLocationName)
-                .creationDateTime(creationDateTime)
+                .creationDateTime(creationDateTime) // TODO : This will create date string of "2019-11-19T11:58:43.576-05:00[America/New_York]" and Black Duck fails to parse this as they are expecting the following format "2019-11-19T16:44:36.697Z".
                 .publisher(productListBuilder
                         .addProduct(Product.java())
                         .addProduct(Product.os())
@@ -67,18 +63,25 @@ class Bdio2Factory {
     /**
      * Converts a DependencyGraph to a List<Component> and adds the appropriate relationships to Project.
      */
-    fun createAndLinkComponents(dependencyGraph: DependencyGraph, project: Project, existingComponents: MutableMap<ExternalId, Component> = mutableMapOf()): List<Component> {
-        return createAndLinkComponentsFromGraph(dependencyGraph, project, dependencyGraph.rootDependencies, existingComponents)
+    fun createAndLinkComponents(dependencyGraph: DependencyGraph, project: Project): List<Component> {
+        return createAndLinkComponentsFromGraph(dependencyGraph, project, dependencyGraph.rootDependencies)
     }
 
-    private fun createAndLinkComponentsFromGraph(dependencyGraph: DependencyGraph, project: Project, dependencies: Set<Dependency>, existingComponents: MutableMap<ExternalId, Component>): List<Component> {
+    private fun createAndLinkComponentsFromGraph(dependencyGraph: DependencyGraph, project: Project, dependencies: Set<Dependency>): List<Component> {
+        val existingComponents = mutableMapOf<ExternalId, Component>()
         val addedComponents = mutableListOf<Component>()
+
         for (dependency in dependencies) {
-            val component = componentFromDependency(dependency);
+            val component = componentFromDependency(dependency)
             project.dependency(com.blackducksoftware.bdio2.model.Dependency().dependsOn(component))
 
-            val children = createAndLinkComponentsToParent(dependencyGraph, component, dependencyGraph.getChildrenForParent(dependency), existingComponents)
-            addedComponents.addAll(children)
+            if (!existingComponents.containsKey(dependency.externalId)) {
+                addedComponents.add(component)
+
+                existingComponents[dependency.externalId] = component
+                val children = createAndLinkComponentsToParent(dependencyGraph, component, dependencyGraph.getChildrenForParent(dependency), existingComponents)
+                addedComponents.addAll(children)
+            }
         }
 
         return addedComponents
@@ -86,12 +89,14 @@ class Bdio2Factory {
 
     private fun createAndLinkComponentsToParent(graph: DependencyGraph, currentComponent: Component, dependencies: Set<Dependency>, existingComponents: MutableMap<ExternalId, Component>): List<Component> {
         val addedComponents = mutableListOf<Component>()
-        for (dependency in dependencies) {
-            if (!existingComponents.containsKey(dependency.externalId)) {
-                val component = componentFromDependency(dependency)
-                currentComponent.dependency(com.blackducksoftware.bdio2.model.Dependency().dependsOn(component));
 
+        for (dependency in dependencies) {
+            val component = componentFromDependency(dependency)
+            currentComponent.dependency(com.blackducksoftware.bdio2.model.Dependency().dependsOn(component))
+
+            if (!existingComponents.containsKey(dependency.externalId)) {
                 addedComponents.add(component)
+
                 existingComponents[dependency.externalId] = component
                 val children = createAndLinkComponentsToParent(graph, component, graph.getChildrenForParent(dependency), existingComponents)
                 addedComponents.addAll(children)
