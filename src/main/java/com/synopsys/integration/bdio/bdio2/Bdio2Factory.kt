@@ -44,7 +44,7 @@ class Bdio2Factory {
         return BdioMetadata()
                 .id(DigestUtils.md5Hex(codeLocationName))
                 .name(codeLocationName)
-                .creationDateTime(creationDateTime) // TODO : This will create date string of "2019-11-19T11:58:43.576-05:00[America/New_York]" and Black Duck fails to parse this as they are expecting the following format "2019-11-19T16:44:36.697Z".
+                .creationDateTime(creationDateTime)
                 .publisher(productListBuilder
                         .addProduct(Product.java())
                         .addProduct(Product.os())
