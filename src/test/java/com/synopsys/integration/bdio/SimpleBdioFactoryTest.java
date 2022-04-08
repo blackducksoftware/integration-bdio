@@ -156,8 +156,7 @@ class SimpleBdioFactoryTest {
         Dependency bdioTestDependency = Dependency.FACTORY.createMavenDependency("com.blackducksoftware.integration", "bdio-test", "1.1.2");
         Dependency bdioReaderDependency = Dependency.FACTORY.createMavenDependency("com.blackducksoftware.integration", "bdio-reader", "1.2.0");
         Dependency commonsLangDependency = Dependency.FACTORY.createMavenDependency("org.apache.commons", "commons-lang3", "3.6");
-
-        //        ExternalId projectExternalId = externalIdFactory.createMavenExternalId();
+        
         ProjectDependencyGraph projectDependencyGraph = new ProjectDependencyGraph(Dependency.FACTORY.createMavenDependency(
             "com.blackducksoftware.integration",
             "integration-bdio",

@@ -42,7 +42,7 @@ class BasicDependencyGraphUtilTest {
     void testAddChildWithParents() {
         BasicDependencyGraph first = new BasicDependencyGraph();
         BasicDependencyGraph second = new BasicDependencyGraph();
-        BasicDependencyGraph combined = new BasicDependencyGraph();
+        DependencyGraph combined = new BasicDependencyGraph();
 
         first.addChildToRoot(dep1);
         first.addChildWithParent(dep2, dep1);

@@ -18,7 +18,7 @@ import com.synopsys.integration.bdio.model.dependency.Dependency;
 import com.synopsys.integration.bdio.model.externalid.ExternalId;
 import com.synopsys.integration.bdio.utility.JsonTestUtils;
 
-class BasicDependencyGraphTransformerTest {
+class DependencyGraphTransformerTest {
     private final JsonTestUtils jsonTestUtils = new JsonTestUtils();
 
     @Test

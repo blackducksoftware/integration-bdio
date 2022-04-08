@@ -26,7 +26,7 @@ class BasicDependencyGraphTest {
 
     @Test
     void testAddChildWithParents() {
-        BasicDependencyGraph graph = new BasicDependencyGraph();
+        DependencyGraph graph = new BasicDependencyGraph();
         graph.addChildWithParent(child1, parent1);
         graph.addChildWithParents(grandchild2, parent1, child1);
         graph.addChildWithParents(child2, DependencyTestUtil.asSet(parent2, child1));
@@ -49,7 +49,7 @@ class BasicDependencyGraphTest {
 
     @Test
     void testRootAdd() {
-        BasicDependencyGraph graph = new BasicDependencyGraph();
+        DependencyGraph graph = new BasicDependencyGraph();
 
         graph.addChildToRoot(parent1);
         graph.addChildrenToRoot(parent2, parent3);
@@ -61,7 +61,7 @@ class BasicDependencyGraphTest {
 
     @Test
     void testAddParentsWithChildren() {
-        BasicDependencyGraph graph = new BasicDependencyGraph();
+        DependencyGraph graph = new BasicDependencyGraph();
         graph.addParentWithChild(parent1, child1);
         graph.addParentWithChildren(child1, DependencyTestUtil.asSet(grandchild1, grandchild2));
         graph.addParentWithChildren(parent2, DependencyTestUtil.asList(child2, child3));
@@ -76,7 +76,7 @@ class BasicDependencyGraphTest {
 
     @Test
     void testAddToSameParent() {
-        BasicDependencyGraph graph = new BasicDependencyGraph();
+        DependencyGraph graph = new BasicDependencyGraph();
         graph.addParentWithChildren(parent1, child1);
         graph.addParentWithChildren(parent1, child2);
         graph.addChildrenToRoot(parent1);
@@ -87,7 +87,7 @@ class BasicDependencyGraphTest {
 
     @Test
     void testHas() {
-        BasicDependencyGraph graph = new BasicDependencyGraph();
+        DependencyGraph graph = new BasicDependencyGraph();
         graph.addParentWithChildren(parent1, child1);
         graph.addChildrenToRoot(parent1);
 
@@ -96,7 +96,7 @@ class BasicDependencyGraphTest {
 
     @Test
     void testDoesNotHas() {
-        BasicDependencyGraph graph = new BasicDependencyGraph();
+        DependencyGraph graph = new BasicDependencyGraph();
         graph.addParentWithChildren(parent1, child1);
         graph.addChildrenToRoot(parent1);
 
@@ -113,7 +113,7 @@ class BasicDependencyGraphTest {
         ProjectDependencyGraph projectGraph = new ProjectDependencyGraph(projectDependency);
         projectGraph.addChildToRoot(child1);
 
-        BasicDependencyGraph basicGraph = new BasicDependencyGraph();
+        DependencyGraph basicGraph = new BasicDependencyGraph();
         basicGraph.addChildToRoot(child2);
         basicGraph.copyGraphToRoot(projectGraph);
 

@@ -20,7 +20,7 @@ import com.synopsys.integration.bdio.model.dependency.ProjectDependency;
 import com.synopsys.integration.bdio.model.externalid.ExternalId;
 import com.synopsys.integration.bdio.model.externalid.ExternalIdFactory;
 
-class BasicDependencyGraphTransformerEdgeCasesTest {
+class DependencyGraphTransformerEdgeCasesTest {
     private final ExternalIdFactory externalIdFactory = new ExternalIdFactory();
 
     private Dependency node(String name, String version, String group) {
@@ -49,7 +49,7 @@ class BasicDependencyGraphTransformerEdgeCasesTest {
         HashMap<Dependency, Integer> counts = new HashMap<>();
 
         Dependency projectDependency = Dependency.FACTORY.createNameVersionDependency(Forge.ANACONDA, "dumb", "dumbVer");
-        ProjectDependencyGraph graph = new ProjectDependencyGraph(new ProjectDependency(projectDependency));
+        ProjectDependencyGraph graph = new ProjectDependencyGraph(projectDependency);
         for (int i = 0; i < 200; i++) {
             String name = "node" + i;
             Dependency next = node(name, name, name);
@@ -87,7 +87,7 @@ class BasicDependencyGraphTransformerEdgeCasesTest {
     @Test
     void testTransformingBrokenTree() {
         Dependency projectDependency = Dependency.FACTORY.createNameVersionDependency(Forge.ANACONDA, "dumb", "dumbVer");
-        ProjectDependencyGraph graph = new ProjectDependencyGraph(new ProjectDependency(projectDependency));
+        ProjectDependencyGraph graph = new ProjectDependencyGraph(projectDependency);
 
         Dependency childOne = node("one", "one", "one");
         Dependency childTwo = node("two", "two", "two");
@@ -123,7 +123,7 @@ class BasicDependencyGraphTransformerEdgeCasesTest {
     @Test
     void testTransformingBrokenTreeLeftHasNodeRightEmpty() {
         Dependency projectDependency = Dependency.FACTORY.createNameVersionDependency(Forge.ANACONDA, "dumb", "dumbVer");
-        ProjectDependencyGraph graph = new ProjectDependencyGraph(new ProjectDependency(projectDependency));
+        ProjectDependencyGraph graph = new ProjectDependencyGraph(projectDependency);
 
         Dependency childOne = node("one", "one", "one");
 
