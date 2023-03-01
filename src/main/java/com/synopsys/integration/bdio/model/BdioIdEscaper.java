@@ -7,23 +7,23 @@
  */
 package com.synopsys.integration.bdio.model;
 
-import com.synopsys.integration.util.IntegrationEscapeUtil;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.synopsys.integration.util.IntegrationEscapeUtil;
+
 public class BdioIdEscaper {
     private IntegrationEscapeUtil integrationEscapeUtil;
 
     public BdioIdEscaper() {
-        this.integrationEscapeUtil = new IntegrationEscapeUtil();
+        this(new IntegrationEscapeUtil());
     }
 
     public BdioIdEscaper(IntegrationEscapeUtil integrationEscapeUtil) {
-        this.integrationEscapeUtil = new IntegrationEscapeUtil();
+        this.integrationEscapeUtil = integrationEscapeUtil;
     }
 
     public List<String> escapePiecesForUri(final List<String> pieces) {
