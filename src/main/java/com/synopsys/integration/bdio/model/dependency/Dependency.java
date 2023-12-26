@@ -9,6 +9,7 @@ package com.synopsys.integration.bdio.model.dependency;
 
 import com.synopsys.integration.bdio.model.externalid.ExternalId;
 import com.synopsys.integration.util.Stringable;
+import java.util.Objects;
 
 public class Dependency extends Stringable {
     public static final DependencyFactory FACTORY = new DependencyFactory();
@@ -90,5 +91,20 @@ public class Dependency extends Stringable {
 
     public void setScope(String scope) {
         this.scope = scope;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dependency that = (Dependency) o;
+        return externalId != null && externalId.equals(that.externalId);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 17 * hash + Objects.hashCode(this.externalId);
+        return hash;
     }
 }

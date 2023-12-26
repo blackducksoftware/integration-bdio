@@ -18,6 +18,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.synopsys.integration.bdio.model.BdioId;
 import com.synopsys.integration.bdio.model.Forge;
 import com.synopsys.integration.util.Stringable;
+import java.util.Objects;
 
 /**
  * A forge is always required. The other fields to populate depend on what external id type you need.
@@ -234,4 +235,25 @@ public class ExternalId extends Stringable {
         return suffix;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ExternalId that = (ExternalId) o;
+        String path = getPath();
+        String version = getVersion();
+        Forge forge = getForge();
+        return path != null && path.equals(that.getPath())
+                && version != null && version.equalsIgnoreCase(that.getVersion())
+                && forge != null && forge.equals(that.getForge());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 17 * hash + Objects.hashCode(this.getPath());
+        hash = 17 * hash + Objects.hashCode(this.getVersion());
+        hash = 17 * hash + Objects.hashCode(this.getForge());
+        return hash;
+    }
 }

@@ -126,8 +126,8 @@ public class LazyExternalIdDependencyGraphBuilder {
         return mutableDependencyGraph;
     }
 
-    private void ensureDependencyInfoExists(LazyId lazyId) {
-        dependencyInfo.computeIfAbsent(lazyId, key -> new LazyDependencyInfo());
+    private LazyDependencyInfo ensureDependencyInfoExists(LazyId lazyId) {
+        return dependencyInfo.computeIfAbsent(lazyId, key -> new LazyDependencyInfo());
     }
 
     public void setDependencyAsAlias(LazyId realLazyId, LazyId fakeLazyId) {
@@ -165,9 +165,7 @@ public class LazyExternalIdDependencyGraphBuilder {
 
     public void addParentWithChild(LazyId parent, LazyId child) {
         ensureDependencyInfoExists(child);
-        ensureDependencyInfoExists(parent);
-        dependencyInfo.get(parent).getChildren().add(child);
-
+        ensureDependencyInfoExists(parent).getChildren().add(child);
     }
 
     public void addParentWithChildren(LazyId parent, List<LazyId> children) {

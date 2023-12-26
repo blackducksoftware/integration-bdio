@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
 
 import com.synopsys.integration.util.Stringable;
+import java.util.Objects;
 
 public class Forge extends Stringable {
     // forges that use the slash as the separator
@@ -134,4 +135,22 @@ public class Forge extends Stringable {
         return separator;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Forge that = (Forge) o;
+        return name != null && name.equalsIgnoreCase(that.getName())
+                && separator != null && separator.equalsIgnoreCase(that.getSeparator())
+                && usePreferredNamespaceAlias != null && usePreferredNamespaceAlias.equals(usePreferredNamespaceAlias);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 17 * hash + Objects.hashCode(name);
+        hash = 17 * hash + Objects.hashCode(separator);
+        hash = 17 * hash + Objects.hashCode(usePreferredNamespaceAlias);
+        return hash;
+    }
 }

@@ -99,9 +99,9 @@ public abstract class DependencyGraph {
     }
 
     public void addParentWithChild(Dependency parent, Dependency child) {
-        ensureDependencyAndRelationshipExists(parent);
-        ensureDependencyExists(child);
-        addRelationship(parent, child);
+        relationships.computeIfAbsent(
+                dependencies.computeIfAbsent(parent.getExternalId(), k -> parent).getExternalId(), k -> new HashSet<ExternalId>()).add(
+                        dependencies.computeIfAbsent(child.getExternalId(), k -> child).getExternalId());
     }
 
     public void addChildWithParent(Dependency child, Dependency parent) {
