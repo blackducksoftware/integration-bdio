@@ -17,7 +17,7 @@ versionFile.delete()
 versionFile << version
 
 dependencies {
-    api 'com.synopsys.integration:integration-common:26.0.6'
+    api 'com.synopsys.integration:integration-common:26.0.7'
 
     testImplementation 'org.mockito:mockito-core:5.2.0'
     testImplementation 'org.skyscreamer:jsonassert:1.5.1'
