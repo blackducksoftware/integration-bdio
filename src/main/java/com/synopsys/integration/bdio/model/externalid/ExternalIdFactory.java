@@ -47,6 +47,11 @@ public class ExternalIdFactory {
         return createYoctoExternalId(layer, name, null);
     }
 
+    public ExternalId createEclipseExternalId(String name, String version) {
+        ExternalId externalId = createNameVersionExternalId(Forge.ECLIPSE, name, version);
+        checkForValidity(externalId);
+        return externalId;
+    }
     public ExternalId createMavenExternalId(String group, String name, String version) {
         ExternalId externalId = createNameVersionExternalId(Forge.MAVEN, name, version);
         externalId.setGroup(group);
