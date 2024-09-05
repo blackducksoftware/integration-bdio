@@ -14,7 +14,7 @@ public class ExternalIdTest {
 
     @Test
     public void testForgeEquality() {
-        Assertions.assertEquals(Forge.ANACONDA, new Forge("/", "anaconda"));
+        assertEquals(Forge.ANACONDA, new Forge("/", "anaconda"));
     }
 
     @Test

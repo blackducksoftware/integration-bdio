@@ -60,7 +60,7 @@ public class DependencyGraphTestUtil {
         for (Dependency dependency : dependencies) {
             assertTrue(graph.hasDependency(dependency));
             assertTrue(graph.hasDependency(dependency.getExternalId()));
-            Assertions.assertEquals(graph.getDependency(dependency.getExternalId()), dependency);
+            assertEquals(graph.getDependency(dependency.getExternalId()), dependency);
         }
     }
 

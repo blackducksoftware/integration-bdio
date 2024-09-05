@@ -38,7 +38,7 @@ public class BdioReaderTest {
         assertNotNull(doc.getBillOfMaterials());
         assertNotNull(doc.getBillOfMaterials().relationships);
         assertEquals("1.1.0", doc.getBillOfMaterials().bdioSpecificationVersion);
-        Assertions.assertEquals(BdioId.createFromUUID("45772d33-5353-44f1-8681-3d8a15540646"), doc.getBillOfMaterials().id);
+        assertEquals(BdioId.createFromUUID("45772d33-5353-44f1-8681-3d8a15540646"), doc.getBillOfMaterials().id);
         assertEquals("BillOfMaterials", doc.getBillOfMaterials().type);
         assertTrue(doc.getBillOfMaterials().creationInfo.getCreator().contains("Tool: integration-bdio-test-0.0.1-SNAPSHOT"));
         assertEquals("gradleTestProject/99.5-SNAPSHOT Black Duck I/O Export", doc.getBillOfMaterials().spdxName);
