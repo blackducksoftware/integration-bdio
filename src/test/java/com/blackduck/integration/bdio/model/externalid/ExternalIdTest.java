@@ -37,7 +37,7 @@ public class ExternalIdTest {
 
     private void assertExternalIdOkay(Forge forge, Function<Forge, ExternalId> externalIdCreator, String name, String version, String expectedBdioId, String expectedExternalId) {
         ExternalId externalId = externalIdCreator.apply(forge);
-        Assertions.assertEquals(new BdioId(expectedBdioId), externalId.createBdioId());
+        assertEquals(new BdioId(expectedBdioId), externalId.createBdioId());
         assertEquals(expectedExternalId, externalId.createExternalId());
         assertEquals(externalId, ExternalId.createFromExternalId(forge, externalId.createExternalId(), name, version));
     }
@@ -45,7 +45,7 @@ public class ExternalIdTest {
     @Test
     public void testEscapingBadUriCharacters() {
         ExternalId nameVersionExternalId = externalIdFactory.createNameVersionExternalId(Forge.NPMJS, "name with spaces", "version with a - and a # and spaces");
-        Assertions.assertEquals(new BdioId("http:npmjs/name+with+spaces/version+with+a+-+and+a+%23+and+spaces"), nameVersionExternalId.createBdioId());
+        assertEquals(new BdioId("http:npmjs/name+with+spaces/version+with+a+-+and+a+%23+and+spaces"), nameVersionExternalId.createBdioId());
         assertEquals("name with spaces/version with a - and a # and spaces", nameVersionExternalId.createExternalId());
     }
 
@@ -63,7 +63,7 @@ public class ExternalIdTest {
         ExternalId externalId = new ExternalId(Forge.MAVEN);
         externalId.setName("testName");
         externalId.setVersion("testVersion");
-        Assertions.assertEquals(new BdioId("http:maven/testName/testVersion"), externalId.createBdioId());
+        assertEquals(new BdioId("http:maven/testName/testVersion"), externalId.createBdioId());
     }
 
     @Test
@@ -79,21 +79,21 @@ public class ExternalIdTest {
     public void testMavenWithoutVersion() {
         ExternalId externalId = externalIdFactory.createMavenExternalId("thegroup", "thename", null);
         assertEquals("thegroup:thename", externalId.createExternalId());
-        Assertions.assertEquals(new BdioId("http:maven/thegroup/thename"), externalId.createBdioId());
+        assertEquals(new BdioId("http:maven/thegroup/thename"), externalId.createBdioId());
     }
 
     @Test
     public void testNameWithoutVersion() {
         ExternalId externalId = externalIdFactory.createNameVersionExternalId(Forge.RUBYGEMS, "thename", null);
         assertEquals("thename", externalId.createExternalId());
-        Assertions.assertEquals(new BdioId("http:rubygems/thename"), externalId.createBdioId());
+        assertEquals(new BdioId("http:rubygems/thename"), externalId.createBdioId());
     }
 
     @Test
     public void testYoctoWithoutVersion() {
         ExternalId externalId = externalIdFactory.createYoctoExternalId("thelayer", "thename", null);
         assertEquals("thelayer/thename", externalId.createExternalId());
-        Assertions.assertEquals(new BdioId("http:yocto/thelayer/thename"), externalId.createBdioId());
+        assertEquals(new BdioId("http:yocto/thelayer/thename"), externalId.createBdioId());
     }
 
     @Test
@@ -102,7 +102,7 @@ public class ExternalIdTest {
         externalId.setVersion("1.0.0");
         externalId.setArchitecture("i586");
         assertEquals("1.0.0/i586", externalId.createExternalId());
-        Assertions.assertEquals(new BdioId("http:pypi/1.0.0/i586"), externalId.createBdioId());
+        assertEquals(new BdioId("http:pypi/1.0.0/i586"), externalId.createBdioId());
     }
 
 }
