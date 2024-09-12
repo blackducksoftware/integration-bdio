@@ -14,4 +14,4 @@ out/
 .gradle/
 build/
 
-src/main/resources/com/synopsys
+src/main/resources/com/blackduck
