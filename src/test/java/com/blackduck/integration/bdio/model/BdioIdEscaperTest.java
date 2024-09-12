@@ -1,6 +1,6 @@
 package com.blackduck.integration.bdio.model;
 
-import com.synopsys.integration.util.IntegrationEscapeUtil;
+import com.blackduck.integration.util.IntegrationEscapeUtil;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

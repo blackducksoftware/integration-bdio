@@ -7,8 +7,8 @@
  */
 package com.blackduck.integration.bdio.graph.builder;
 
-import com.synopsys.integration.util.NameVersion;
-import com.synopsys.integration.util.Stringable;
+import com.blackduck.integration.util.NameVersion;
+import com.blackduck.integration.util.Stringable;
 
 import java.util.Arrays;
 import java.util.LinkedList;

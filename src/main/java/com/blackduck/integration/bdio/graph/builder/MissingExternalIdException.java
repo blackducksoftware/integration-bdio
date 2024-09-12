@@ -7,7 +7,7 @@
  */
 package com.blackduck.integration.bdio.graph.builder;
 
-import com.synopsys.integration.exception.IntegrationException;
+import com.blackduck.integration.exception.IntegrationException;
 
 public class MissingExternalIdException extends IntegrationException {
     public MissingExternalIdException(LazyId lazyId) {

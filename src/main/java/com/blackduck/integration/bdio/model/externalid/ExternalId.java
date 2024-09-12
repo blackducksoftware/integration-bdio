@@ -17,7 +17,7 @@ import com.blackduck.integration.bdio.model.BdioId;
 import com.blackduck.integration.bdio.model.Forge;
 import org.apache.commons.lang3.StringUtils;
 
-import com.synopsys.integration.util.Stringable;
+import com.blackduck.integration.util.Stringable;
 
 /**
  * A forge is always required. The other fields to populate depend on what external id type you need.

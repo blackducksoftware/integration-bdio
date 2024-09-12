@@ -7,7 +7,7 @@
  */
 package com.blackduck.integration.bdio.model;
 
-import com.synopsys.integration.util.IntegrationEscapeUtil;
+import com.blackduck.integration.util.IntegrationEscapeUtil;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

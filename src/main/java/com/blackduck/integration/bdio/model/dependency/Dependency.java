@@ -8,7 +8,7 @@
 package com.blackduck.integration.bdio.model.dependency;
 
 import com.blackduck.integration.bdio.model.externalid.ExternalId;
-import com.synopsys.integration.util.Stringable;
+import com.blackduck.integration.util.Stringable;
 
 public class Dependency extends Stringable {
     public static final DependencyFactory FACTORY = new DependencyFactory();
