@@ -65,6 +65,7 @@ public class Forge extends Stringable {
     // forges that use the colon as the separator
     public static final Forge ANDROID = new Forge(":", "android");
     public static final Forge COCOAPODS = new Forge(":", "cocoapods");
+    public static final Forge CONAN = new Forge(":", "conan");
     public static final Forge CPE = new Forge(":", "cpe");
     public static final Forge GITHUB = new Forge(":", "github");
     public static final Forge GOLANG = new Forge(":", "golang");
