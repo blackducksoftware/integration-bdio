@@ -14,6 +14,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import static com.blackduck.integration.bdio.graph.builder.LazyIdSource.*;
 
 /**
@@ -45,4 +48,34 @@ public class LazyId extends Stringable {
         this.pieces.addAll(pieces);
     }
 
+    @Override
+    public int hashCode() {
+        return pieces.hashCode();
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof LazyId))
+            return false;
+
+        final LazyId other = (LazyId) obj;
+        return pieces.equals(other.pieces);
+    }
+
+    /**
+     * Since the only instance variable never gets modified, we store toString() results for efficiency.
+     */
+    private String toStringResult;
+
+    @Override
+    public String toString() {
+        if (toStringResult == null) {
+            toStringResult = new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
+                .append("pieces", pieces)
+                .build();
+        }
+        return toStringResult;
+    }
 }
