@@ -1,6 +1,6 @@
 buildscript {
     apply from: 'https://raw.githubusercontent.com/blackducksoftware/integration-resources/master/gradle_common/buildscript-repositories.gradle', to: buildscript
-    apply from: 'https://raw.githubusercontent.com/blackducksoftware/integration-resources/master/gradle_common/buildscript-cgp-version.gradle'
+    project.ext { managedCgpVersion = '2.1.1' }
 
     ext {
         javaTargetCompatibility = 8
@@ -13,7 +13,7 @@ buildscript {
 project.ext.moduleName = 'com.blackduck.integration.integration-bdio'
 project.ext.javaUseAutoModuleName = 'true'
 
-version = '27.0.3-SNAPSHOT'
+version = '27.0.3'
 description = 'A library to allow for easy and clear creation of Black Duck I/O (bdio) documents.'
 
 apply plugin: 'com.blackduck.integration.library'
