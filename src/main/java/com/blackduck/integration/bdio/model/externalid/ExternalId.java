@@ -11,11 +11,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.blackduck.integration.bdio.model.BdioId;
 import com.blackduck.integration.bdio.model.Forge;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.blackduck.integration.util.Stringable;
 
@@ -234,4 +237,33 @@ public class ExternalId extends Stringable {
         return suffix;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(forge, pieces, prefix, suffix);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof ExternalId)) {
+            return false;
+        }
+        ExternalId that = (ExternalId) obj;
+        return Objects.equals(forge, that.forge) &&
+               Objects.equals(pieces, that.pieces) &&
+               Objects.equals(prefix, that.prefix) &&
+               Objects.equals(suffix, that.suffix);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
+            .append("forge", forge)
+            .append("pieces", pieces)
+            .append("prefix", prefix)
+            .append("suffix", suffix)
+            .build();
+    }
 }

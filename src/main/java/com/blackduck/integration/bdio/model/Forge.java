@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
@@ -136,4 +137,22 @@ public class Forge extends Stringable {
         return separator;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, separator, usePreferredNamespaceAlias);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Forge)) {
+            return false;
+        }
+        Forge that = (Forge) obj;
+        return Objects.equals(name, that.name) &&
+               Objects.equals(separator, that.separator) &&
+               Objects.equals(usePreferredNamespaceAlias, that.usePreferredNamespaceAlias);
+    }
 }

@@ -7,6 +7,11 @@
  */
 package com.blackduck.integration.bdio.model.dependency;
 
+import java.util.Objects;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import com.blackduck.integration.bdio.model.externalid.ExternalId;
 import com.blackduck.integration.util.Stringable;
 
@@ -90,5 +95,35 @@ public class Dependency extends Stringable {
 
     public void setScope(String scope) {
         this.scope = scope;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, version, externalId, scope);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Dependency)) {
+            return false;
+        }
+        Dependency that = (Dependency) obj;
+        return Objects.equals(name, that.name) &&
+               Objects.equals(version, that.version) &&
+               Objects.equals(externalId, that.externalId) &&
+               Objects.equals(scope, that.scope);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
+            .append("name", name)
+            .append("version", version)
+            .append("externalId", externalId)
+            .append("scope", scope)
+            .build();
     }
 }
